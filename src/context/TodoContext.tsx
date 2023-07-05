@@ -11,12 +11,14 @@ interface TodoContextType {
   deleteTodo: (id: number) => void;
   task: string;
   setTask: (task: string) => void;
+  editTodo: (id: number) => void;
 }
 
 export const todoContext = createContext<TodoContextType>({
   todos: [],
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => {},
   deleteTodo() {},
+  editTodo() {},
   task: "",
   setTask: () => {},
 });
@@ -24,10 +26,19 @@ export const todoContext = createContext<TodoContextType>({
 const TodoContextProvider = ({ children }: any) => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [task, setTask] = useState("");
+  const [editTask, setEditTask] = useState("");
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   //añadir tarea
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!task) {
+      return;
+    }
+
     const newTodo: Todo = {
       id: todos.length + 1,
       text: task,
@@ -41,11 +52,27 @@ const TodoContextProvider = ({ children }: any) => {
     setTodos(deleteArrTodo);
   }
 
+  //editar tarea
+  function editTodo(id: number) {
+    const updateTodo = todos.map((todo) =>
+      todo.id === id ? { ...todo, text: editTask } : todo
+    );
+    setTodos(updateTodo);
+    handleClose();
+  }
+
   //subrayar tarea
 
   return (
     <todoContext.Provider
-      value={{ todos, task, handleSubmit, deleteTodo, setTask }}
+      value={{
+        todos,
+        task,
+        handleSubmit,
+        deleteTodo,
+        editTodo,
+        setTask,
+      }}
     >
       {children}
     </todoContext.Provider>
