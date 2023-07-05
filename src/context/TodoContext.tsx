@@ -21,12 +21,12 @@ export const todoContext = createContext<TodoContextType>({
   setTask: () => {},
 });
 
-const TodoContext = ({ children }: any) => {
+const TodoContextProvider = ({ children }: any) => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [task, setTask] = useState("");
 
   //añadir tarea
-  function handleSubmit(e: React.FormEvent<HTMLInputElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const newTodo: Todo = {
       id: todos.length + 1,
@@ -52,4 +52,4 @@ const TodoContext = ({ children }: any) => {
   );
 };
 
-export default TodoContext;
+export default TodoContextProvider;
