@@ -1,4 +1,3 @@
-import TodoContextProvider from "./context/TodoContext";
 import { Container, Row, Col } from "react-bootstrap";
 import beachImg from "./assets/beach.jpeg";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -10,10 +9,6 @@ import TodoList from "./components/TodoList";
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Header />} />
-      </Routes>
-
       <Container
         className="mt-5 d-flex flex-column justify-content-center mx-auto container_app"
         style={{
@@ -39,6 +34,16 @@ function App() {
               justifyContent: "space-between",
             }}
           >
+            <Header />
+
+            <Routes>
+              <Route path="/all" element={"toda la lista"} />{" "}
+              {/* Renderiza el componente TodoList directamente en la ruta "/" */}
+              <Route path="/complete" element={"completas"} />{" "}
+              {/* Agrega un componente para la ruta "/complete" */}
+              <Route path="/active" element={"activadas"} />{" "}
+              {/* Agrega un componente para la ruta "/active" */}
+            </Routes>
             <TodoList />
           </Col>
         </Row>

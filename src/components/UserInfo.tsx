@@ -2,11 +2,14 @@
 
 const UserInfo = () => {
   return (
-    <div className="d-flex gap-3 ball_container mt-2">
-      <div className="ball" style={{ backgroundColor: "red" }}></div>
-      <div className="ball" style={{ backgroundColor: "orange" }}></div>
-      <div className="ball" style={{ backgroundColor: "green" }}></div>
-      INFO DEL USER
+    <div className="d-flex flex-column ">
+      <div className="d-flex gap-3 ball_container mt-2">
+        <div className="ball" style={{ backgroundColor: "red" }}></div>
+        <div className="ball" style={{ backgroundColor: "orange" }}></div>
+        <div className="ball" style={{ backgroundColor: "green" }}></div>
+      </div>
+
+      <div className="data"> INFO DEL USER</div>
     </div>
   );
 };
