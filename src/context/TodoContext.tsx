@@ -3,6 +3,7 @@ import { useState, createContext } from "react";
 interface Todo {
   id: number;
   text: string;
+  chequed: boolean;
 }
 
 interface TodoContextType {
@@ -12,25 +13,55 @@ interface TodoContextType {
   task: string;
   setTask: (task: string) => void;
   editTodo: (id: number) => void;
+  show: boolean;
+  chequed: boolean;
+  handleShow: (id: number) => void;
+  handleChequed: (id: number) => void;
+  handleClose: () => void;
+  setEditTask: (task: string) => void;
+  setEditTodoId: (id: number) => void;
+  editTodoId: number;
 }
 
 export const todoContext = createContext<TodoContextType>({
   todos: [],
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => {},
+  handleSubmit: () => {},
   deleteTodo() {},
   editTodo() {},
   task: "",
   setTask: () => {},
+  show: false,
+  chequed: false,
+  handleShow: () => {},
+  handleChequed: () => {},
+  handleClose: () => {},
+  setEditTask: () => {},
+  setEditTodoId: () => {},
+  editTodoId: 0,
 });
 
 const TodoContextProvider = ({ children }: any) => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [task, setTask] = useState("");
   const [editTask, setEditTask] = useState("");
+  const [editTodoId, setEditTodoId] = useState<number>(0);
   const [show, setShow] = useState(false);
+  const [chequed, setChequed] = useState(false);
+
+  //aplicar estilo line-through
+  function handleChequed(id: number) {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, chequed: !todo.chequed } : todo
+      )
+    );
+  }
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = (id: number) => {
+    setEditTodoId(id);
+    setShow(true);
+  };
 
   //añadir tarea
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -40,8 +71,9 @@ const TodoContextProvider = ({ children }: any) => {
     }
 
     const newTodo: Todo = {
-      id: todos.length + 1,
+      id: Math.random(),
       text: task,
+      chequed: false,
     };
     setTodos([...todos, newTodo]);
     setTask("");
@@ -54,10 +86,10 @@ const TodoContextProvider = ({ children }: any) => {
 
   //editar tarea
   function editTodo(id: number) {
-    const updateTodo = todos.map((todo) =>
+    const updatedTodos = todos.map((todo) =>
       todo.id === id ? { ...todo, text: editTask } : todo
     );
-    setTodos(updateTodo);
+    setTodos(updatedTodos);
     handleClose();
   }
 
@@ -72,6 +104,14 @@ const TodoContextProvider = ({ children }: any) => {
         deleteTodo,
         editTodo,
         setTask,
+        show,
+        handleShow,
+        handleClose,
+        setEditTask,
+        editTodoId,
+        setEditTodoId,
+        chequed,
+        handleChequed,
       }}
     >
       {children}
