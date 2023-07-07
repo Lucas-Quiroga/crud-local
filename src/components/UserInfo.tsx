@@ -1,8 +1,6 @@
 //renderizara la columna del usuario
 import { Container, Row, Col } from "react-bootstrap";
 import { FiUser } from "react-icons/fi";
-import Badge from "react-bootstrap/Badge";
-import ListGroup from "react-bootstrap/ListGroup";
 import Accordion from "react-bootstrap/Accordion";
 import "../styles/UserInfo.css";
 

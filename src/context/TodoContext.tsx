@@ -64,7 +64,7 @@ const TodoContextProvider = ({ children }: any) => {
   const [editTask, setEditTask] = useState("");
   const [editTodoId, setEditTodoId] = useState<number>(0);
   const [show, setShow] = useState(false);
-  const [chequed, setChequed] = useState(false);
+  const [chequed] = useState(false);
   const [filter, setFilter] = useState<Filter>(Filter.All);
 
   const filterTodos = todos.filter((todo) => {

@@ -2,7 +2,6 @@
 import { useContext } from "react";
 import { Container } from "react-bootstrap";
 import TodoItem from "./TodoItem";
-import TodoInput from "./TodoInput";
 import { todoContext } from "../context/TodoContext";
 import "../styles/TodoInput.css";
 
