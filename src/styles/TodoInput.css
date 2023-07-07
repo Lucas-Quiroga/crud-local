@@ -1,0 +1,17 @@
+.MyComponent input {
+  border: none !important;
+}
+
+.MyComponent input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.MyComponent input::placeholder {
+  color: white;
+}
+
+.MyComponent button{
+    border: none !important;
+  font-weight: 900 !important;
+}

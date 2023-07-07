@@ -10,7 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <Container
-        className="mt-5 d-flex flex-column justify-content-center mx-auto container_app"
+        className="mt-5 d-flex flex-column justify-content-center mx-auto"
         style={{
           borderRadius: "1rem",
           boxSizing: "border-box",
@@ -18,7 +18,7 @@ function App() {
         }}
       >
         <Row>
-          <Col lg={2} style={{ backgroundColor: "lightblue" }}>
+          <Col lg={2} style={{ backgroundColor: " #e3e9eb " }}>
             <UserInfo />
           </Col>
 

@@ -1,44 +1,32 @@
-/* body {
-  margin: 0 auto;
-  overflow-y: hidden;
-  background: #333a4b;
-} */
 
-/* .container_app{
-  height: 100vh;
-  box-sizing: border-box;
-  overflow: hidden;
-} */
-
-/* .row_container_app{
-  border-radius: 4% !important;
-  background-color: blue;
-  display: flex;
-  flex-direction: column;
-
-} */
-
-.col-content{
+.col-content {
   z-index: 1;
 }
 
-.img-div{
+.img-div {
   z-index: 2;
 }
 
-.ball{
-    width: 1rem;
-    height: 1rem;
-    display: inline-block;
-    border-radius: 50%;
-    transition: 0.3s ease;
+.ball {
+  width: 1rem;
+  height: 1rem;
+  display: inline-block;
+  border-radius: 50%;
+  transition: 0.3s ease;
 }
 
-.col_beach{
-  background-image: url("./assets/beach.png") ;
+.col_beach {
+  background-image: url("./assets/beach.png");
   background-size: cover;
 }
 
 .circle-checkbox .form-check-input {
   border-radius: 50% !important;
+  border: 2px solid rgba(36, 36, 36, 0.5);
+  box-shadow: none;
+
+}
+
+.circle-checkbox :checked:focus{
+  background-color: black;
 }

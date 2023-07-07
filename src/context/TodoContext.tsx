@@ -1,5 +1,11 @@
 import { useState, createContext } from "react";
 
+enum Filter {
+  All = "All",
+  Complete = "Complete",
+  Active = "Active",
+}
+
 interface Todo {
   id: number;
   text: string;
@@ -47,6 +53,21 @@ const TodoContextProvider = ({ children }: any) => {
   const [editTodoId, setEditTodoId] = useState<number>(0);
   const [show, setShow] = useState(false);
   const [chequed, setChequed] = useState(false);
+  const [filter, setFilter] = useState<Filter>(Filter.All);
+
+  const filterTodos = todos.filter((todo) => {
+    if (filter === Filter.Complete) {
+      return todo.chequed;
+    }
+    if (filter === Filter.Active) {
+      return !todo.chequed;
+    }
+    return true;
+  });
+
+  const handleFilterChange = (newFilter: Filter) => {
+    setFilter(newFilter);
+  };
 
   //aplicar estilo line-through
   function handleChequed(id: number) {
