@@ -16,7 +16,7 @@ function App() {
             boxSizing: "border-box",
             overflow: "hidden",
           }}
-          className="d-flex justify-content-center "
+          className="d-flex justify-content-center mb-2"
         >
           <Col lg={2} style={{ backgroundColor: " #e3e9eb " }}>
             <UserInfo />

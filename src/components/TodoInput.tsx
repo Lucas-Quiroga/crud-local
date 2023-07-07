@@ -8,7 +8,7 @@ const TodoInput = () => {
   const { handleSubmit, task, setTask } = useContext(todoContext);
 
   return (
-    <div className="input-container">
+    <div className="input-container mb-2">
       <Form
         onSubmit={handleSubmit}
         style={{
