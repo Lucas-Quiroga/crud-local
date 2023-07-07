@@ -5,19 +5,20 @@ import "./App.css";
 import Header from "./components/Header";
 import UserInfo from "./components/UserInfo";
 import TodoList from "./components/TodoList";
+import TodoInput from "./components/TodoInput";
 
 function App() {
   return (
     <BrowserRouter>
-      <Container
-        className="mt-5 d-flex flex-column justify-content-center mx-auto"
-        style={{
-          borderRadius: "1rem",
-          boxSizing: "border-box",
-          overflow: "hidden",
-        }}
-      >
-        <Row>
+      <Container className="d-flex flex-column justify-content-center mx-auto vh-100">
+        <Row
+          style={{
+            borderRadius: "1rem",
+            boxSizing: "border-box",
+            overflow: "hidden",
+          }}
+          className="d-flex justify-content-center "
+        >
           <Col lg={2} style={{ backgroundColor: " #e3e9eb " }}>
             <UserInfo />
           </Col>
@@ -25,26 +26,18 @@ function App() {
           <Col
             lg={10}
             style={{
-              backgroundImage: `url(${beachImg})`,
-              backgroundSize: "cover",
-              backgroundPosition: "0 60rem",
+              backgroundColor: " #e0ded8 ",
               height: "35rem",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
+              overflow: "hidden",
             }}
           >
             <Header />
 
-            <Routes>
-              <Route path="/all" element={"toda la lista"} />{" "}
-              {/* Renderiza el componente TodoList directamente en la ruta "/" */}
-              <Route path="/complete" element={"completas"} />{" "}
-              {/* Agrega un componente para la ruta "/complete" */}
-              <Route path="/active" element={"activadas"} />{" "}
-              {/* Agrega un componente para la ruta "/active" */}
-            </Routes>
             <TodoList />
+            <TodoInput />
           </Col>
         </Row>
       </Container>

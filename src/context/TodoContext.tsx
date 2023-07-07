@@ -18,7 +18,13 @@ interface TodoContextType {
   deleteTodo: (id: number) => void;
   task: string;
   setTask: (task: string) => void;
-  editTodo: (id: number) => void;
+  editTodo: (
+    id: number,
+    e:
+      | React.KeyboardEvent<HTMLInputElement>
+      | React.FormEvent<HTMLFormElement>
+      | React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => void;
   show: boolean;
   chequed: boolean;
   handleShow: (id: number) => void;
@@ -27,6 +33,9 @@ interface TodoContextType {
   setEditTask: (task: string) => void;
   setEditTodoId: (id: number) => void;
   editTodoId: number;
+  filter: Filter;
+  filterTodos: Todo[];
+  handleFilterChange: (newFilter: Filter) => void;
 }
 
 export const todoContext = createContext<TodoContextType>({
@@ -44,6 +53,9 @@ export const todoContext = createContext<TodoContextType>({
   setEditTask: () => {},
   setEditTodoId: () => {},
   editTodoId: 0,
+  filter: Filter.All,
+  filterTodos: [],
+  handleFilterChange: () => {},
 });
 
 const TodoContextProvider = ({ children }: any) => {
@@ -57,6 +69,9 @@ const TodoContextProvider = ({ children }: any) => {
 
   const filterTodos = todos.filter((todo) => {
     if (filter === Filter.Complete) {
+      if (filter.length === 0 && filter === Filter.Complete) {
+        return "no hay nada";
+      }
       return todo.chequed;
     }
     if (filter === Filter.Active) {
@@ -69,7 +84,7 @@ const TodoContextProvider = ({ children }: any) => {
     setFilter(newFilter);
   };
 
-  //aplicar estilo line-through
+  //subrayar tarea
   function handleChequed(id: number) {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
@@ -106,15 +121,20 @@ const TodoContextProvider = ({ children }: any) => {
   }
 
   //editar tarea
-  function editTodo(id: number) {
+  function editTodo(
+    id: number,
+    e:
+      | React.KeyboardEvent<HTMLInputElement>
+      | React.FormEvent<HTMLFormElement>
+      | React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) {
+    e.preventDefault();
     const updatedTodos = todos.map((todo) =>
       todo.id === id ? { ...todo, text: editTask } : todo
     );
     setTodos(updatedTodos);
     handleClose();
   }
-
-  //subrayar tarea
 
   return (
     <todoContext.Provider
@@ -133,6 +153,9 @@ const TodoContextProvider = ({ children }: any) => {
         setEditTodoId,
         chequed,
         handleChequed,
+        filter,
+        filterTodos,
+        handleFilterChange,
       }}
     >
       {children}

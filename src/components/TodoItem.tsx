@@ -17,6 +17,7 @@ interface TodoItemProps {
   handleShow: (id: number) => void;
   editTodoId: number | null;
   show: boolean;
+  isChecked: boolean;
 }
 
 const TodoItem = ({
@@ -26,6 +27,7 @@ const TodoItem = ({
   handleShow,
   editTodoId,
   show,
+  isChecked,
 }: TodoItemProps) => {
   return (
     <Container
@@ -40,12 +42,14 @@ const TodoItem = ({
         <Form.Check
           aria-label="option 1"
           type="checkbox"
+          checked={isChecked}
           className="circle-checkbox mb-1"
-          onClick={() => handleChequed(todo.id)}
+          onChange={() => handleChequed(todo.id)}
         />
         <h5
           style={{
             textDecoration: `${todo.chequed ? "line-through" : "none"} `,
+            fontFamily: "sans-serif",
           }}
         >
           {todo.text}
@@ -53,11 +57,11 @@ const TodoItem = ({
       </div>
 
       <div className="d-flex justify-content-end gap-2 align-items-center">
-        <Button variant="danger" onClick={() => deleteTodo(todo.id)}>
-          <BsFillTrash3Fill />
-        </Button>
         <Button onClick={() => handleShow(todo.id)}>
           <BiEdit />
+        </Button>
+        <Button variant="danger" onClick={() => deleteTodo(todo.id)}>
+          <BsFillTrash3Fill />
         </Button>
         {editTodoId === todo.id && show ? <TodoModal /> : ""}
       </div>

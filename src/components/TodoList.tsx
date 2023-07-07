@@ -1,17 +1,47 @@
 //Este componente se encargará de renderizar la lista de tareas.
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Container } from "react-bootstrap";
 import TodoItem from "./TodoItem";
 import TodoInput from "./TodoInput";
 import { todoContext } from "../context/TodoContext";
+import "../styles/TodoInput.css";
+
+enum Filter {
+  All = "All",
+  Complete = "Complete",
+  Active = "Active",
+}
 
 const TodoList = () => {
-  const { todos, handleChequed, deleteTodo, handleShow, editTodoId, show } =
-    useContext(todoContext);
+  const {
+    handleChequed,
+    deleteTodo,
+    handleShow,
+    editTodoId,
+    show,
+    filterTodos,
+    filter,
+  } = useContext(todoContext);
+
+  let message = "";
+
+  if (filter === Filter.Complete && filterTodos.length === 0) {
+    message = "No tasks completed.";
+  }
+  if (filter === Filter.Active && filterTodos.length === 0) {
+    message = "No active tasks found.";
+  }
+  if (filter === Filter.All && filterTodos.length === 0) {
+    message = "Add a task to get started.";
+  }
 
   return (
-    <div style={{ marginTop: "auto" }}>
+    <div
+      className="container-wrapper"
+      style={{ marginTop: "auto", overflow: "hidden" }}
+    >
       <Container
+        className="todo-list"
         style={{
           flex: 1,
           position: "relative",
@@ -20,7 +50,8 @@ const TodoList = () => {
           padding: 0,
         }}
       >
-        {todos.map((todo) => (
+        {message && <p>{message}</p>}
+        {filterTodos.map((todo) => (
           <TodoItem
             key={todo.id}
             todo={todo}
@@ -29,11 +60,11 @@ const TodoList = () => {
             handleShow={handleShow}
             editTodoId={editTodoId}
             show={show}
+            isChecked={todo.chequed}
           />
         ))}
         <br />
       </Container>
-      <TodoInput />
     </div>
   );
 };

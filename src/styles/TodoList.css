@@ -1,0 +1,22 @@
+.container-wrapper {
+  position: relative;
+  height: calc(100% - 50px);
+  overflow-y: auto;
+  padding: 0;
+}
+
+.container-wrapper .input-container {
+  position: sticky;
+  bottom: 0;
+  background-color: #e0ded8;
+  padding: 10px;
+}
+
+.container-wrapper .input-container form {
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.container-wrapper .todo-list {
+  margin-bottom: 60px;
+}
