@@ -8,7 +8,6 @@ import TodoList from "./components/TodoList";
 import TodoInput from "./components/TodoInput";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import UsersContextProvider from "./context/UserContext";
 import { usersContext } from "./context/UserContext";
 
 function App() {
