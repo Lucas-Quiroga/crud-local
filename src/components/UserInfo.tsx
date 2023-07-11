@@ -1,10 +1,14 @@
 //renderizara la columna del usuario
+import { useContext } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { FiUser } from "react-icons/fi";
 import Accordion from "react-bootstrap/Accordion";
+import { usersContext } from "../context/UserContext";
 import "../styles/UserInfo.css";
 
 const UserInfo = () => {
+  const { userActive } = useContext(usersContext);
+
   return (
     <div className="d-flex flex-column " style={{ overflow: "hidden" }}>
       <div className="d-flex gap-3 ball_container mt-2">
@@ -13,7 +17,7 @@ const UserInfo = () => {
         <div className="ball zoom" style={{ backgroundColor: "green" }}></div>
       </div>
       <Row className="d-flex flex-column gap-3">
-        <Col className="d-flex gap-3 mx-2 mt-3">
+        <Col className="d-flex flex-column gap-3 mx-2 mt-3 ">
           <div
             style={{
               objectFit: "cover",
@@ -27,7 +31,7 @@ const UserInfo = () => {
           >
             <FiUser />
           </div>
-          <h6>Welcome</h6>
+          <div className="d-flex flex-wrap">{userActive?.email}</div>
         </Col>
         <Col>
           <Accordion className="accordion_content">

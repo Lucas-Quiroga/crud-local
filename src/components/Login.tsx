@@ -3,7 +3,7 @@ import { Container, Form, Button } from "react-bootstrap";
 import { usersContext } from "../context/UserContext";
 
 const Login = () => {
-  const { users, setActiveSession } = useContext(usersContext);
+  const { users, setActiveSession, setUserActive } = useContext(usersContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,6 +13,7 @@ const Login = () => {
     const findUser = users.find((userIndex) => userIndex.email === email);
 
     if (findUser && findUser.password === password) {
+      setUserActive(findUser);
       setActiveSession(true);
     } else {
       setActiveSession(false);

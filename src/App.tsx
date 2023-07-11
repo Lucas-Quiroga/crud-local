@@ -12,7 +12,7 @@ import UsersContextProvider from "./context/UserContext";
 import { usersContext } from "./context/UserContext";
 
 function App() {
-  const { activeSession } = useContext(usersContext);
+  const { activeSession, setActiveSession } = useContext(usersContext);
 
   const [activeComponent, setActiveComponent] = useState(false);
 
@@ -32,8 +32,19 @@ function App() {
             }}
             className="d-flex justify-content-center mb-2"
           >
-            <Col lg={2} style={{ backgroundColor: " #e3e9eb " }}>
+            <Col
+              lg={2}
+              style={{ backgroundColor: " #e3e9eb " }}
+              className="d-flex flex-column"
+            >
               <UserInfo />
+              <Button
+                variant="secondary"
+                className="mt-5 justify-content-end"
+                onClick={() => setActiveSession(false)}
+              >
+                Logout
+              </Button>
             </Col>
 
             <Col
