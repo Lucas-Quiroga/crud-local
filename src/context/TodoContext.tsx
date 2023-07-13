@@ -14,6 +14,7 @@ interface Todo {
 
 interface TodoContextType {
   todos: Todo[];
+  setTodos: (todos: Todo[]) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   deleteTodo: (id: number) => void;
   task: string;
@@ -40,6 +41,7 @@ interface TodoContextType {
 
 export const todoContext = createContext<TodoContextType>({
   todos: [],
+  setTodos: () => {},
   handleSubmit: () => {},
   deleteTodo() {},
   editTodo() {},
@@ -140,6 +142,7 @@ const TodoContextProvider = ({ children }: any) => {
     <todoContext.Provider
       value={{
         todos,
+        setTodos,
         task,
         handleSubmit,
         deleteTodo,

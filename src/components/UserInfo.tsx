@@ -1,5 +1,5 @@
 //renderizara la columna del usuario
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { FiUser } from "react-icons/fi";
 import Accordion from "react-bootstrap/Accordion";
@@ -9,10 +9,14 @@ import { useAuth0 } from "@auth0/auth0-react";
 import "../styles/UserInfo.css";
 
 const UserInfo = () => {
-  const { userActive } = useContext(usersContext);
+  // const { userActive } = useContext(usersContext);
   const { user, isAuthenticated } = useAuth0();
 
-  console.log(JSON.stringify(user));
+  // useEffect(() => {
+  //   if (isAuthenticated && user) {
+  //     localStorage.setItem("user", JSON.stringify(user));
+  //   }
+  // }, [isAuthenticated, user]);
 
   return (
     isAuthenticated && (
@@ -26,12 +30,12 @@ const UserInfo = () => {
           <div className="ball zoom" style={{ backgroundColor: "green" }}></div>
         </div>
         <Row className="d-flex flex-column gap-3">
-          <Col className="d-flex flex-column gap-3 mx-2 mt-3 ">
+          <Col className="d-flex flex-column gap-3 mx-2 mt-3 align-items-center">
             <div
               style={{
                 objectFit: "cover",
-                width: "30px",
-                height: "30px",
+                width: "80px",
+                height: "80px",
                 borderRadius: "50%",
                 backgroundColor: "grey",
                 fontSize: "1.2rem",
@@ -43,7 +47,7 @@ const UserInfo = () => {
               <img
                 src={user?.picture}
                 alt=""
-                style={{ objectFit: "cover", width: "40px" }}
+                style={{ objectFit: "cover", width: "80px" }}
               />
             </div>
             <div className="d-flex flex-wrap">{user?.name}</div>
