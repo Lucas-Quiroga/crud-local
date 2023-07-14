@@ -6,7 +6,7 @@ const LoginAuth0 = () => {
 
   return (
     !isAuthenticated && (
-      <Container className="d-flex justify-content-center mx-auto align-items-center vh-100">
+      <Container className="d-flex justify-content-center mx-auto align-items-center">
         <Button onClick={() => loginWithRedirect()}>Sign In</Button>
       </Container>
     )

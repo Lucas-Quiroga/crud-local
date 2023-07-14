@@ -13,7 +13,6 @@ enum Filter {
 
 const TodoList = () => {
   const {
-    todos,
     handleChequed,
     deleteTodo,
     handleShow,
