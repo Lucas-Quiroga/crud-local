@@ -8,12 +8,19 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
   const { user } = useAuth0();
+  console.log(user);
+
   return (
     <div>
       <LoginAuth0 />
       <LogoutAuth0 />
 
-      <div className="profile">{user?.email}</div>
+      <div className="profile">
+        <ul>
+          <li>{user?.email}</li>
+          <li>{user?.name}</li>
+        </ul>
+      </div>
     </div>
     // <BrowserRouter>
     //   <IntialView />
