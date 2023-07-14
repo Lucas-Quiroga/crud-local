@@ -1,17 +1,13 @@
-import { useContext } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import UserInfo from "./UserInfo";
 import Header from "./Header";
 import TodoList from "./TodoList";
 import TodoInput from "./TodoInput";
-import { usersContext } from "../context/UserContext";
 import { useAuth0 } from "@auth0/auth0-react";
 import LogoutAuth0 from "./LogoutAuth0";
 import Spinner from "react-bootstrap/Spinner";
 
 const AppMain = () => {
-  const { setActiveSession } = useContext(usersContext);
-
   const { isLoading } = useAuth0();
 
   return (

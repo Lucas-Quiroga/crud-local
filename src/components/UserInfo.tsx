@@ -1,22 +1,11 @@
 //renderizara la columna del usuario
-import { useContext, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { FiUser } from "react-icons/fi";
 import Accordion from "react-bootstrap/Accordion";
-import { usersContext } from "../context/UserContext";
 import { useAuth0 } from "@auth0/auth0-react";
-
 import "../styles/UserInfo.css";
 
 const UserInfo = () => {
-  // const { userActive } = useContext(usersContext);
   const { user, isAuthenticated } = useAuth0();
-
-  // useEffect(() => {
-  //   if (isAuthenticated && user) {
-  //     localStorage.setItem("user", JSON.stringify(user));
-  //   }
-  // }, [isAuthenticated, user]);
 
   return (
     isAuthenticated && (
@@ -43,7 +32,6 @@ const UserInfo = () => {
               }}
               className="d-flex align-items-center justify-content-center"
             >
-              {/* <FiUser /> */}
               <img
                 src={user?.picture}
                 alt=""
