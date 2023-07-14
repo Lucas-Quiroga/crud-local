@@ -8,30 +8,30 @@ import { todoContext } from "./context/TodoContext";
 import IntialView from "./components/IntialView";
 
 function App() {
-  const [accessToken, setAccessToken] = useState("");
-  // const { todos, setTodos } = useContext(todoContext);
+  // const [accessToken, setAccessToken] = useState("");
+  // // const { todos, setTodos } = useContext(todoContext);
 
-  // const { activeSession } = useContext(usersContext);
-  const { getAccessTokenSilently } = useAuth0();
+  // // const { activeSession } = useContext(usersContext);
+  // const { getAccessTokenSilently } = useAuth0();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const getAccessToken = await getAccessTokenSilently();
-        setAccessToken(getAccessToken);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const getAccessToken = await getAccessTokenSilently();
+  //       setAccessToken(getAccessToken);
 
-        // const storedTodos = localStorage.getItem("todos");
-        // if (storedTodos) {
-        //   const parsedTodos = JSON.parse(storedTodos);
-        //   setTodos(parsedTodos);
-        // }
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  //       // const storedTodos = localStorage.getItem("todos");
+  //       // if (storedTodos) {
+  //       //   const parsedTodos = JSON.parse(storedTodos);
+  //       //   setTodos(parsedTodos);
+  //       // }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
 
-    fetchData();
-  }, [getAccessTokenSilently, setAccessToken]);
+  //   fetchData();
+  // }, [getAccessTokenSilently, setAccessToken]);
 
   return (
     <BrowserRouter>

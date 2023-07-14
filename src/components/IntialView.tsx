@@ -8,12 +8,17 @@ const IntialView = () => {
     <>
       <Row className="d-flex">
         <Col>
-          <Container className="d-flex vh-100" fluid>
-            <div className="d-flex justify-content-center mx-auto align-items-center flex-wrap">
+          <Container className="d-flex mt-5">
+            <div className="d-flex justify-content-center mx-auto align-items-center flex-wrap mt-5">
               {featuresCards.map((feature) => (
-                <Col lg={4} className="d-flex">
+                <Col
+                  xxl={4}
+                  lg={4}
+                  md={12}
+                  className="d-flex mt-5"
+                  key={feature.id}
+                >
                   <Card
-                    key={feature.id}
                     className="zoom mx-4 bg-dark text-white"
                     style={{ overflow: "hidden" }}
                   >
@@ -35,7 +40,7 @@ const IntialView = () => {
         </Col>
         <Col
           lg={12}
-          className="d-flex justify-content-center mx-auto align-items-center"
+          className="d-flex justify-content-center mx-auto align-items-center mt-5"
         >
           <LoginAuth0 />
         </Col>
