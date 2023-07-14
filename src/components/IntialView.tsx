@@ -8,7 +8,7 @@ const IntialView = () => {
     <>
       <Row className="d-flex">
         <Col>
-          <Container className="d-flex mt-5">
+          <Container className="d-flex mt-5" fluid>
             <div className="d-flex justify-content-center mx-auto align-items-center flex-wrap mt-5">
               {featuresCards.map((feature) => (
                 <Col

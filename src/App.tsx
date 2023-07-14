@@ -38,7 +38,7 @@ function App() {
       <Routes>
         {/* <Route path="/" element={<a href="/login">ir a logear</a>} /> */}
         <Route path="/" element={<IntialView />} />
-        <Route path="/todo" element={<AppMain />} />
+        <Route path="/todo/*" element={<AppMain />} />
         {/* // <Route path="/" element={<AuthForm />} /> */}
       </Routes>
     </BrowserRouter>

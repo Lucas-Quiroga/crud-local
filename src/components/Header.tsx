@@ -34,13 +34,13 @@ function Header() {
 
     // Asignar el texto correspondiente según la ruta
     switch (path) {
-      case "/":
+      case "/todo":
         title = "All";
         break;
-      case "/complete":
+      case "/todo/complete":
         title = "Complete";
         break;
-      case "/active":
+      case "/todo/active":
         title = "Active";
         break;
       default:
@@ -106,7 +106,7 @@ function Header() {
             </DropdownButton>
           ) : (
             <>
-              <NavLink to="/">
+              <NavLink to="/todo">
                 <Button
                   className="zoom"
                   style={{
@@ -118,7 +118,7 @@ function Header() {
                   All
                 </Button>
               </NavLink>
-              <NavLink to="/complete">
+              <NavLink to="/todo/complete">
                 <Button
                   className="zoom"
                   style={{
@@ -130,7 +130,7 @@ function Header() {
                   Complete
                 </Button>
               </NavLink>
-              <NavLink to="/active">
+              <NavLink to="/todo/active">
                 <Button
                   className="zoom"
                   style={{
