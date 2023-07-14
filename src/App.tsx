@@ -7,10 +7,12 @@ import "./App.css";
 function App() {
   return (
     <BrowserRouter>
+      <LoginAuth0 />
+
       <Routes>
         {/* <Route path="/" element={<IntialView />} /> */}
 
-        <Route path="/login" element={<LoginAuth0 />} />
+        {/* <Route path="/login" element={<LoginAuth0 />} /> */}
         <Route path="/todo/*" element={<AppMain />} />
       </Routes>
     </BrowserRouter>
