@@ -67,7 +67,7 @@ const IntialView = () => {
           lg={12}
           className="d-flex justify-content-center mx-auto align-items-center mt-5"
         >
-          <LoginAuth0 />
+          ex buton
         </Col>
       </Row>
     </>
