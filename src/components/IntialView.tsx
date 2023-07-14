@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import featuresCards from "../features.json";
 import { Card, Container, Row, Col } from "react-bootstrap";
-import LoginAuth0 from "./LoginAuth0";
+// import LoginAuth0 from "./LoginAuth0";
 import "../styles/IntialView.css";
 
 const IntialView = () => {
