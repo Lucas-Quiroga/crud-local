@@ -1,14 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppMain from "./components/AppMain";
-// import IntialView from "./components/IntialView";
-import LoginAuth0 from "./components/LoginAuth0";
+import IntialView from "./components/IntialView";
 import "./App.css";
 
 function App() {
   return (
     <BrowserRouter>
-      <LoginAuth0 />
-
+      <IntialView />
       <Routes>
         {/* <Route path="/" element={<IntialView />} /> */}
 
