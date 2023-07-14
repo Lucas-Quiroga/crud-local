@@ -2,19 +2,19 @@
     {
       "id": 1,
       "title": "First sample",
-      "img": "src/assets/work1.jpg",
+      "img": "https://imageup.me/images/d2cd2348-0142-442c-b049-f0e5c1a01c37.jpeg",
       "description": "Creation of the dashboard with CRUD (Create, Read, Update, Delete) functions implemented.",
       "date": "July 7, 2023"
     },{
       "id": 2,
         "title": "Feature: Auth0 login system",
-        "img": "src/assets/work2.jpg",
+        "img": "https://imageup.me/images/1e470518-de4a-4c17-a178-000ee1d48a21.jpeg",
         "description": "Implementation of Auth0 login to provide secure authentication and application login capabilities.",
         "date": "July 14, 2023"
       },{
         "id": 3,
         "title": "Upcoming updates",
-        "img": "src/assets/work3.jpg",
+        "img": "https://imageup.me/images/0583fad2-b203-4c7b-8474-0a76463017e0.jpeg",
         "description": "Update the user's view information, adapting the local storage and color tool to the user's taste.",
         "date": "July 20, 2023"
       }
