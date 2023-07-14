@@ -1,90 +1,46 @@
-import { useState, useContext } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import { BrowserRouter } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
-import UserInfo from "./components/UserInfo";
-import TodoList from "./components/TodoList";
-import TodoInput from "./components/TodoInput";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import { usersContext } from "./context/UserContext";
+import AppMain from "./components/AppMain";
+import LoginAuth0 from "./components/LoginAuth0";
+import { todoContext } from "./context/TodoContext";
+import IntialView from "./components/IntialView";
 
 function App() {
-  const { activeSession, setActiveSession } = useContext(usersContext);
+  // const [accessToken, setAccessToken] = useState("");
+  // // const { todos, setTodos } = useContext(todoContext);
 
-  const [activeComponent, setActiveComponent] = useState(false);
+  // // const { activeSession } = useContext(usersContext);
+  // const { getAccessTokenSilently } = useAuth0();
 
-  function toggleComponent() {
-    setActiveComponent(!activeComponent);
-  }
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const getAccessToken = await getAccessTokenSilently();
+  //       setAccessToken(getAccessToken);
+
+  //       // const storedTodos = localStorage.getItem("todos");
+  //       // if (storedTodos) {
+  //       //   const parsedTodos = JSON.parse(storedTodos);
+  //       //   setTodos(parsedTodos);
+  //       // }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [getAccessTokenSilently, setAccessToken]);
 
   return (
     <BrowserRouter>
-      {activeSession ? (
-        <Container className="d-flex flex-column justify-content-center mx-auto vh-100">
-          <Row
-            style={{
-              borderRadius: "1rem",
-              boxSizing: "border-box",
-              overflow: "hidden",
-            }}
-            className="d-flex justify-content-center mb-2"
-          >
-            <Col
-              lg={2}
-              style={{ backgroundColor: " #e3e9eb " }}
-              className="d-flex flex-column"
-            >
-              <UserInfo />
-              <Button
-                variant="secondary"
-                className="mt-5 justify-content-end"
-                onClick={() => setActiveSession(false)}
-              >
-                Logout
-              </Button>
-            </Col>
-
-            <Col
-              lg={10}
-              style={{
-                backgroundColor: " #e0ded8 ",
-                height: "35rem",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                overflow: "hidden",
-              }}
-            >
-              <Header />
-
-              <TodoList />
-              <TodoInput />
-            </Col>
-          </Row>
-        </Container>
-      ) : (
-        <Container className="d-flex flex-column justify-content-center mx-auto vh-100">
-          <Row
-            style={{
-              borderRadius: "1rem",
-              boxSizing: "border-box",
-              overflow: "hidden",
-            }}
-            className="d-flex justify-content-center mb-2"
-          >
-            {activeComponent ? <Login /> : <Register />}
-          </Row>
-          <Button
-            variant="secondary"
-            onClick={toggleComponent}
-            className="mt-3"
-          >
-            {activeComponent ? "Register" : "Login"}
-          </Button>
-        </Container>
-      )}
+      <Routes>
+        {/* <Route path="/" element={<a href="/login">ir a logear</a>} /> */}
+        <Route path="/" element={<IntialView />} />
+        <Route path="/todo/*" element={<AppMain />} />
+        {/* // <Route path="/" element={<AuthForm />} /> */}
+      </Routes>
     </BrowserRouter>
   );
 }

@@ -1,5 +1,5 @@
 //Este componente se encargará de renderizar la lista de tareas.
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import TodoItem from "./TodoItem";
 import { todoContext } from "../context/TodoContext";
@@ -33,6 +33,10 @@ const TodoList = () => {
   if (filter === Filter.All && filterTodos.length === 0) {
     message = "Add a task to get started.";
   }
+
+  // useEffect(() => {
+  //   localStorage.setItem("todos", JSON.stringify(filterTodos));
+  // }, [filterTodos]);
 
   return (
     <div
