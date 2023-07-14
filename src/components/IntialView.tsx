@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import featuresCards from "../features.json";
 import { Card, Container, Row, Col } from "react-bootstrap";
-import LoginAuth0 from "./LoginAuth0";
-import LogoutAuth0 from "./LogoutAuth0";
+// import LoginAuth0 from "./LoginAuth0";
+// import LogoutAuth0 from "./LogoutAuth0";
 import "../styles/IntialView.css";
 
 const IntialView = () => {
@@ -68,8 +68,8 @@ const IntialView = () => {
           lg={12}
           className="d-flex justify-content-center mx-auto align-items-center mt-5"
         >
-          <LoginAuth0 />
-          <LogoutAuth0 />
+          {/* <LoginAuth0 />
+          <LogoutAuth0 /> */}
         </Col>
       </Row>
     </>

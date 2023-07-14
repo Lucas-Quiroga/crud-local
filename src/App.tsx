@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppMain from "./components/AppMain";
 import IntialView from "./components/IntialView";
-// import LoginAuth0 from "./components/LoginAuth0";
-// import LogoutAuth0 from "./components/LogoutAuth0";
+import LoginAuth0 from "./components/LoginAuth0";
+import LogoutAuth0 from "./components/LogoutAuth0";
 import "./App.css";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -12,8 +12,8 @@ function App() {
 
   return (
     <div>
-      {/* <LoginAuth0 />
-      <LogoutAuth0 /> */}
+      <LoginAuth0 />
+      <LogoutAuth0 />
 
       <div className="profile">
         <ul>
