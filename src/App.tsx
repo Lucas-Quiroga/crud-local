@@ -26,6 +26,7 @@ function App() {
         <Routes>
           <Route path="/" element={<IntialView />} />
           {/* <Route path="/login" element={<LoginAuth0 />} /> */}
+          <Route path="/todo" element={<AppMain />} />
           <Route path="/todo/*" element={<AppMain />} />
         </Routes>
       </BrowserRouter>
