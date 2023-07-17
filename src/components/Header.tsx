@@ -1,6 +1,5 @@
-//Este componente se encargará de renderizar el encabezado con los botones "All", "Complete" y "Active".
 import { useContext, useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom"; // Importar el hook useParams
 import { NavLink } from "react-router-dom";
 import {
   Container,
@@ -23,6 +22,8 @@ enum Filter {
 function Header() {
   const { handleFilterChange } = useContext(todoContext);
   const location = useLocation();
+  const { todoSection } = useParams(); // Obtener el parámetro de la ruta
+
   const [showDropdown, setShowDropdown] = useState(false);
 
   const [pageTitle, setPageTitle] = useState("");
@@ -32,7 +33,7 @@ function Header() {
     const path = location.pathname;
     let title = "";
 
-    // Asignar el texto correspondiente según la ruta
+    // Asignar el texto correspondiente según la ruta y el parámetro
     switch (path) {
       case "/todo":
         title = "All";
@@ -108,7 +109,9 @@ function Header() {
             <>
               <NavLink to="/todo">
                 <Button
-                  className="zoom"
+                  className={`zoom ${
+                    todoSection === undefined ? "active" : ""
+                  }`}
                   style={{
                     background: "rgba(36, 36, 36, 0.7)",
                     border: "none",
@@ -120,7 +123,9 @@ function Header() {
               </NavLink>
               <NavLink to="/todo/complete">
                 <Button
-                  className="zoom"
+                  className={`zoom ${
+                    todoSection === "complete" ? "active" : ""
+                  }`}
                   style={{
                     background: "rgba(36, 36, 36, 0.7)",
                     border: "none",
@@ -132,7 +137,7 @@ function Header() {
               </NavLink>
               <NavLink to="/todo/active">
                 <Button
-                  className="zoom"
+                  className={`zoom ${todoSection === "active" ? "active" : ""}`}
                   style={{
                     background: "rgba(36, 36, 36, 0.7)",
                     border: "none",

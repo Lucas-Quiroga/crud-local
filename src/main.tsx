@@ -7,13 +7,17 @@ import UsersContextProvider from "./context/UserContext.tsx";
 import { Auth0Provider } from "@auth0/auth0-react";
 import "./index.css";
 
+const domain = import.meta.env.VITE_AUTH0_DOMAIN;
+const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
+const redirectUri = import.meta.env.VITE_APPDEPLOY;
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Auth0Provider
-      domain={import.meta.env.VITE_AUTH0_DOMAIN}
-      clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
+      domain={domain}
+      clientId={clientId}
       authorizationParams={{
-        redirect_uri: import.meta.env.VITE_APPDEPLOY,
+        redirect_uri: redirectUri,
       }}
     >
       <UsersContextProvider>

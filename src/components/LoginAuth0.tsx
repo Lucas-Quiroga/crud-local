@@ -5,8 +5,8 @@ const LoginAuth0 = () => {
   const { loginWithRedirect } = useAuth0();
 
   return (
-    <Container className="d-flex justify-content-center mx-auto align-items-center">
-      <Button onClick={() => loginWithRedirect()} variant="light">
+    <Container className="d-flex mx-auto">
+      <Button onClick={() => loginWithRedirect()} variant="success">
         Sign In
       </Button>
     </Container>

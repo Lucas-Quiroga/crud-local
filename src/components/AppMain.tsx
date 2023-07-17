@@ -4,7 +4,6 @@ import Header from "./Header";
 import TodoList from "./TodoList";
 import TodoInput from "./TodoInput";
 import { useAuth0 } from "@auth0/auth0-react";
-import LogoutAuth0 from "./LogoutAuth0";
 import Spinner from "react-bootstrap/Spinner";
 
 const AppMain = () => {
@@ -38,8 +37,6 @@ const AppMain = () => {
                   className="d-flex flex-column"
                 >
                   <UserInfo />
-
-                  <LogoutAuth0 />
                 </Col>
 
                 <Col
@@ -63,7 +60,7 @@ const AppMain = () => {
           </Row>
         </Container>
       ) : (
-        <h1>error</h1>
+        ""
       )}
     </>
   );
