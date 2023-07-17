@@ -9,7 +9,7 @@ import "./index.css";
 
 const domain = import.meta.env.VITE_AUTH0_DOMAIN;
 const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
-const redirectUri = import.meta.env.VITE_APPDEPLOY;
+// const redirectUri = import.meta.env.VITE_APPDEPLOY;
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       domain={domain}
       clientId={clientId}
       authorizationParams={{
-        redirect_uri: redirectUri,
+        redirect_uri: "https://crud-dash.netlify.app" + "/todo",
       }}
     >
       <UsersContextProvider>
