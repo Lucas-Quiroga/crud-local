@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       domain={domain}
       clientId={clientId}
       authorizationParams={{
-        redirect_uri: "https://crud-dash.netlify.app" + "/todo",
+        redirect_uri: window.location.origin + "/todo",
       }}
     >
       <UsersContextProvider>

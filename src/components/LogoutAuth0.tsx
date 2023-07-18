@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Container } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
-const url = "https://crud-dash.netlify.app/";
+// const url = "https://crud-dash.netlify.app/";
 
 const LogoutAuth0 = () => {
   const { logout } = useAuth0();
@@ -10,7 +10,9 @@ const LogoutAuth0 = () => {
     <Container className="d-flex mx-auto ">
       <Button
         variant="secondary"
-        onClick={() => logout({ logoutParams: { returnTo: url } })}
+        onClick={() =>
+          logout({ logoutParams: { returnTo: window.location.origin } })
+        }
       >
         Log Out
       </Button>

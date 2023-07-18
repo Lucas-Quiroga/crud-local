@@ -6,8 +6,8 @@ const LoginAuth0 = () => {
 
   return (
     <Container className="d-flex mx-auto">
-      <Button onClick={() => loginWithRedirect()} variant="success">
-        Sign In
+      <Button onClick={() => loginWithRedirect()} variant="light">
+        Log In
       </Button>
     </Container>
   );

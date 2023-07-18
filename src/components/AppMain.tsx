@@ -12,10 +12,11 @@ const AppMain = () => {
   return (
     <>
       {isAuthenticated ? (
-        <Container className="d-flex flex-column justify-content-center mx-auto vh-100">
+        <Container className="d-flex flex-column justify-content-center mx-auto mt-5">
           <Row
             style={{
               borderRadius: "1rem",
+              border: "2px solid black",
               boxSizing: "border-box",
               overflow: "hidden",
             }}
