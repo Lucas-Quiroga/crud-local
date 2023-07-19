@@ -1,5 +1,5 @@
 //renderizara la columna del usuario
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
 import { useAuth0 } from "@auth0/auth0-react";
 import "../styles/UserInfo.css";
@@ -45,7 +45,9 @@ const UserInfo = () => {
               <Accordion.Item eventKey="0">
                 <Accordion.Header>Features</Accordion.Header>
                 <Accordion.Body>
-                  <Container fluid>work in progress</Container>
+                  <Container fluid>
+                    <Button>Colors</Button>
+                  </Container>
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>

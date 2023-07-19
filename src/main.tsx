@@ -4,6 +4,7 @@ import App from "./App.tsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import TodoContextProvider from "./context/TodoContext.tsx";
 import UsersContextProvider from "./context/UserContext.tsx";
+import ColorContextProvider from "./context/ColorContext.tsx";
 import { Auth0Provider } from "@auth0/auth0-react";
 import "./index.css";
 
@@ -20,11 +21,13 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         redirect_uri: window.location.origin + "/todo",
       }}
     >
-      <UsersContextProvider>
-        <TodoContextProvider>
-          <App />
-        </TodoContextProvider>
-      </UsersContextProvider>
+      <ColorContextProvider>
+        <UsersContextProvider>
+          <TodoContextProvider>
+            <App />
+          </TodoContextProvider>
+        </UsersContextProvider>
+      </ColorContextProvider>
     </Auth0Provider>
   </React.StrictMode>
 );

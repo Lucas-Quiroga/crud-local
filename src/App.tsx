@@ -8,6 +8,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+
       <Routes>
         <Route path="/" element={<IntialView />} />
         <Route path="/todo" element={<AppMain />} />

@@ -5,9 +5,13 @@ import TodoList from "./TodoList";
 import TodoInput from "./TodoInput";
 import { useAuth0 } from "@auth0/auth0-react";
 import Spinner from "react-bootstrap/Spinner";
+import ColorSelect from "./ColorSelect";
 
 const AppMain = () => {
   const { isLoading, isAuthenticated } = useAuth0();
+  const filterButton = true;
+
+  const skdAppColors = [];
 
   return (
     <>
@@ -39,23 +43,38 @@ const AppMain = () => {
                 >
                   <UserInfo />
                 </Col>
+                {filterButton ? (
+                  <Col
+                    lg={10}
+                    style={{
+                      backgroundColor: " #e0ded8 ",
+                      height: "35rem",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <ColorSelect />
+                  </Col>
+                ) : (
+                  <Col
+                    lg={10}
+                    style={{
+                      backgroundColor: " #e0ded8 ",
+                      height: "35rem",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <Header />
 
-                <Col
-                  lg={10}
-                  style={{
-                    backgroundColor: " #e0ded8 ",
-                    height: "35rem",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    overflow: "hidden",
-                  }}
-                >
-                  <Header />
-
-                  <TodoList />
-                  <TodoInput />
-                </Col>
+                    <TodoList />
+                    <TodoInput />
+                  </Col>
+                )}
               </>
             )}
           </Row>
