@@ -1,12 +1,14 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+
+const LOCAL_STORAGE_KEY = "colorPaletteData";
 
 interface ColorPaletteContextType {
-  colors: string;
-  setColors: (colors: string) => void;
+  colors: { [key: string]: string };
+  setColors: React.Dispatch<React.SetStateAction<{ [key: string]: string }>>;
 }
 
 const defaultColorPaletteContext: ColorPaletteContextType = {
-  colors: "",
+  colors: {},
   setColors: () => {},
 };
 
@@ -15,7 +17,19 @@ export const ColorPaletteContext = createContext<ColorPaletteContextType>(
 );
 
 const ColorContextProvider = ({ children }: any) => {
-  const [colors, setColors] = useState("");
+  const [colors, setColors] = useState<{ [key: string]: string }>(() => {
+    const storedData = localStorage.getItem(LOCAL_STORAGE_KEY);
+    return storedData
+      ? JSON.parse(storedData)
+      : {
+          UserInfo: "#e3e9eb",
+          Dashboard: "#e0ded8",
+        };
+  });
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(colors));
+  }, [colors]);
 
   return (
     <ColorPaletteContext.Provider value={{ colors, setColors }}>

@@ -6,12 +6,16 @@ import TodoInput from "./TodoInput";
 import { useAuth0 } from "@auth0/auth0-react";
 import Spinner from "react-bootstrap/Spinner";
 import ColorSelect from "./ColorSelect";
+import { useContext } from "react";
+import { ColorPaletteContext } from "../context/ColorContext";
+import { useParams } from "react-router-dom";
 
 const AppMain = () => {
   const { isLoading, isAuthenticated } = useAuth0();
-  const filterButton = true;
 
-  const skdAppColors = [];
+  const { todoSection } = useParams();
+
+  const { colors } = useContext(ColorPaletteContext);
 
   return (
     <>
@@ -38,16 +42,16 @@ const AppMain = () => {
               <>
                 <Col
                   lg={2}
-                  style={{ backgroundColor: " #e3e9eb " }}
+                  style={{ backgroundColor: `${colors["UserInfo"]}` }}
                   className="d-flex flex-column"
                 >
                   <UserInfo />
                 </Col>
-                {filterButton ? (
+                {todoSection === "color" ? (
                   <Col
                     lg={10}
                     style={{
-                      backgroundColor: " #e0ded8 ",
+                      backgroundColor: `${colors["Dashboard"]}`,
                       height: "35rem",
                       display: "flex",
                       flexDirection: "column",
@@ -61,7 +65,7 @@ const AppMain = () => {
                   <Col
                     lg={10}
                     style={{
-                      backgroundColor: " #e0ded8 ",
+                      backgroundColor: `${colors["Dashboard"]}`,
                       height: "35rem",
                       display: "flex",
                       flexDirection: "column",

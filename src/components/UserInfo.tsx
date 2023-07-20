@@ -43,10 +43,15 @@ const UserInfo = () => {
           <Col>
             <Accordion className="accordion_content">
               <Accordion.Item eventKey="0">
-                <Accordion.Header>Features</Accordion.Header>
+                <Accordion.Header>Tools</Accordion.Header>
                 <Accordion.Body>
                   <Container fluid>
-                    <Button>Colors</Button>
+                    <a href="/todo">
+                      <Button>Todo</Button>
+                    </a>
+                    <a href="/todo/color">
+                      <Button>Colors</Button>
+                    </a>
                   </Container>
                 </Accordion.Body>
               </Accordion.Item>
