@@ -75,7 +75,7 @@ function Header() {
       >
         {pageTitle}
       </h1>
-      <nav>
+      <nav className="ms-auto">
         <Container className="d-flex gap-4 justify-content-end">
           {showDropdown ? (
             <DropdownButton

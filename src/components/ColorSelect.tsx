@@ -2,13 +2,14 @@ import { useContext } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { ColorPaletteContext } from "../context/ColorContext";
 import { TwitterPicker } from "react-color/";
+import "../styles/ColorSelect.css";
 
 const ColorSelect = () => {
   const { colors, setColors } = useContext(ColorPaletteContext);
 
   function handleResetColor(title: any) {
     // Restablecer el color base para la opción dada
-    if (title === "UserInfo") {
+    if (title === "User") {
       setColors((prevColors) => ({
         ...prevColors,
         [title]: "#e3e9eb",
@@ -25,7 +26,7 @@ const ColorSelect = () => {
   const optionChange = [
     {
       id: Math.random(),
-      title: "UserInfo",
+      title: "User",
     },
     {
       id: Math.random(),
@@ -34,26 +35,38 @@ const ColorSelect = () => {
   ];
 
   return (
-    <Row className="d-flex justify-content-center mx-auto mt-5 align-items-center">
+    <Row className="d-flex justify-content-center mx-auto align-items-center">
       {optionChange.map((e) => (
         <Col
           key={e.id}
-          lg={12}
-          md={12}
-          className="d-flex flex-column justify-content-center align-items-center"
+          lg={6}
+          md={6}
+          sm={12}
+          className="d-flex justify-content-center align-items-center "
         >
-          <h4>Cambiar color a: {e.title}</h4>
-          <hr />
-          <TwitterPicker
-            color={colors[e.title]}
-            onChangeComplete={(color) =>
-              setColors((prevColors) => ({
-                ...prevColors,
-                [e.title]: color.hex,
-              }))
-            }
-          />
-          <Button onClick={() => handleResetColor(e.title)}>Reset</Button>
+          <div className="cookie-card">
+            <span className="title">🎨 {e.title.toLocaleUpperCase()}</span>
+            <div className="description">
+              <TwitterPicker
+                color={colors[e.title]}
+                onChangeComplete={(color) =>
+                  setColors((prevColors) => ({
+                    ...prevColors,
+                    [e.title]: color.hex,
+                  }))
+                }
+              />
+            </div>
+            <div className="actions">
+              <Button
+                className="accept ms-auto"
+                onClick={() => handleResetColor(e.title)}
+                variant="secondary"
+              >
+                Reset
+              </Button>
+            </div>
+          </div>
         </Col>
       ))}
     </Row>

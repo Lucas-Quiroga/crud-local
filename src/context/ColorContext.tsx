@@ -22,7 +22,7 @@ const ColorContextProvider = ({ children }: any) => {
     return storedData
       ? JSON.parse(storedData)
       : {
-          UserInfo: "#e3e9eb",
+          User: "#e3e9eb",
           Dashboard: "#e0ded8",
         };
   });

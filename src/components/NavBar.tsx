@@ -10,7 +10,7 @@ const NavBar = () => {
   const { isAuthenticated } = useAuth0();
 
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-dark">
+    <Navbar collapseOnSelect expand="lg" bg="dark" data-bs-theme="dark">
       <Container>
         <Navbar.Brand href="/" style={{ color: "white" }}>
           <img src={icon} alt="icon-app" width={"100rem"} />
